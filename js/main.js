@@ -2,7 +2,8 @@
 require.config({ 
     'paths': { 
 		"underscore": "libs/underscore", 
-		"backbone": "libs/backbone"
+		"backbone": "libs/backbone",
+        "marionette": "libs/backbone.marionette"
 	}
 }); 
 

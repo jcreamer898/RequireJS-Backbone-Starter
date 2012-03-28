@@ -1,7 +1,7 @@
 // This is the main entry point for the App
-define(['routers/home'], function(router){
+define(['marionette'], function(marionette){
 	var init = function(){
-		this.router = new router();
+		console.log(marionette);
 	};
 	
 	return { init: init};
