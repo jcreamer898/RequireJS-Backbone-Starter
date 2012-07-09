@@ -1,16 +1,23 @@
 // This set's up the module paths for underscore and backbone
 require.config({ 
     'paths': { 
-		"underscore": "libs/underscore", 
-		"backbone": "libs/backbone"
-	}
+		"underscore": "libs/underscore-min", 
+		"backbone": "libs/backbone-min"
+	},
+	'shim': 
+	{
+		backbone: {
+			'deps': ['jquery', 'underscore'],
+			'exports': 'Backbone'
+		}
+	}	
 }); 
 
 require([
-	'order!libs/underscore',
-	'order!libs/backbone',
-	'order!app'
+	'underscore',
+	'backbone',
+	'app'
 	], 
-	function(_,Backbone,app){
+	function(_, Backbone, app){
 		app.init();
 });

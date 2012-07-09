@@ -1,9 +1,9 @@
 /**
- * @license RequireJS text 2.0.0 Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
+ * @license RequireJS text 2.0.1 Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
  * see: http://github.com/requirejs/text for details
  */
-/*jslint */
+/*jslint regexp: true */
 /*global require: false, XMLHttpRequest: false, ActiveXObject: false,
   define: false, window: false, process: false, Packages: false,
   java: false, location: false */
@@ -19,11 +19,11 @@ define(['module'], function (module) {
         defaultHostName = hasLocation && location.hostname,
         defaultPort = hasLocation && (location.port || undefined),
         buildMap = [],
-        masterConfig = module.config(),
+        masterConfig = (module.config && module.config()) || {},
         text, fs;
 
     text = {
-        version: '2.0.0',
+        version: '2.0.1',
 
         strip: function (content) {
             //Strips <?xml ...?> declarations so that external SVG and XML
@@ -47,16 +47,18 @@ define(['module'], function (module) {
                 .replace(/[\b]/g, "\\b")
                 .replace(/[\n]/g, "\\n")
                 .replace(/[\t]/g, "\\t")
-                .replace(/[\r]/g, "\\r");
+                .replace(/[\r]/g, "\\r")
+                .replace(/[\u2028]/g, "\\u2028")
+                .replace(/[\u2029]/g, "\\u2029");
         },
 
-        createXhr: function () {
+        createXhr: masterConfig.createXhr || function () {
             //Would love to dump the ActiveX crap in here. Need IE 6 to die first.
             var xhr, i, progId;
             if (typeof XMLHttpRequest !== "undefined") {
                 return new XMLHttpRequest();
             } else if (typeof ActiveXObject !== "undefined") {
-                for (i = 0; i < 3; i++) {
+                for (i = 0; i < 3; i += 1) {
                     progId = progIds[i];
                     try {
                         xhr = new ActiveXObject(progId);
@@ -124,7 +126,7 @@ define(['module'], function (module) {
             uHostName = uHostName[0];
 
             return (!uProtocol || uProtocol === protocol) &&
-                   (!uHostName || uHostName === hostname) &&
+                   (!uHostName || uHostName.toLowerCase() === hostname.toLowerCase()) &&
                    ((!uPort && !uHostName) || uPort === port);
         },
 
