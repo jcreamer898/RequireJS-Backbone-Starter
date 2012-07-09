@@ -6,3 +6,11 @@ The build.bat file in the js directory also has scripts to run to build the appl
 There are simple examples of how to write a router, view, and model.  
 
 Feel free to fork and use in your own BackboneJS app!!
+
+### Recent Changes as of 7/8/2012
+
+* RequireJS v2 now now longer requires `order.js`
+* Use the `shim` config object to have non AMD libraries work with RequireJS
+* The original version of this branch is now `oldamd`
+
+Hit me up for questions! @jcreamer898
