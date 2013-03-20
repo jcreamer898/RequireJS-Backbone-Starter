@@ -7,6 +7,11 @@ There are simple examples of how to write a router, view, and model.
 
 Feel free to fork and use in your own BackboneJS app!!
 
+### Recent Changes as of 3/20/2013
+* Update backbone to v1.0.0
+* Update underscore to v1.4.4
+* Add in source map for backbone-min.js
+
 ### Recent Changes as of 7/8/2012
 * Backbone > .9 removed all support for AMD modules.
 * RequireJS v2 now know longer requires `order.js`
