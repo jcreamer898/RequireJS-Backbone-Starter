@@ -7,6 +7,12 @@ There are simple examples of how to write a router, view, and model.
 
 Feel free to fork and use in your own BackboneJS app!!
 
+### Recent Changes as of 1/25/2014
+* Update backbone to v1.1.0
+* Update underscore to v1.5.2
+* Update modernizr to v2.7.2
+* Add in source map for underscore-min.js
+
 ### Recent Changes as of 3/20/2013
 * Update backbone to v1.0.0
 * Update underscore to v1.4.4
