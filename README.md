@@ -26,18 +26,20 @@ Feel free to fork and use in your own BackboneJS app!!
 
 This is the latest way to add non AMD libraries to RequireJS.  
 
-    require.config({ 
-        'paths': { 
-      	"underscore": "libs/underscore-min", 
-    		"backbone": "libs/backbone-min"
-    	},
-    	'shim': 
-    	{
-    		backbone: {
-    			'deps': ['jquery', 'underscore'],
-    			'exports': 'Backbone'
-    		}
-    	}	
-    }); 
+```js
+require.config({ 
+    'paths': { 
+  	"underscore": "libs/underscore-min", 
+		"backbone": "libs/backbone-min"
+	},
+	'shim': 
+	{
+		backbone: {
+			'deps': ['jquery', 'underscore'],
+			'exports': 'Backbone'
+		}
+	}	
+}); 
+```
 
 Hit me up for questions! @jcreamer898
